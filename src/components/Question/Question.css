@@ -1,0 +1,19 @@
+.App {
+    background-image: url("../../assets/bgIMG.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+  }
+
+  .avatar {
+    width: 130px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .answer {
+    color: white
+  }
