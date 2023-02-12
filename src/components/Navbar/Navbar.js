@@ -5,13 +5,16 @@ import './Navbar.css';
 import {data} from '../../constants'
 
 
-const Navbar = ({started, setStarted, count, setCount, setRandom}) => {
+const Navbar = ({started, setStarted, count, setCount, setRandom, setScore}) => {
 
 
 
   const startGame = () => {
     setStarted(true);
     setCount(0)
+    setScore(0)
+    
+
     setRandom(Math.floor(Math.random() * 4) + 1)
     console.log(started)
   }

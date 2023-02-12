@@ -21,7 +21,7 @@ function App() {
  
 
   return (<>
-   <Navbar started={started} setStarted={setStarted} count={count} setCount={setCount} setRandom={setRandom} />
+   <Navbar setScore={setScore} started={started} setStarted={setStarted} count={count} setCount={setCount} setRandom={setRandom} />
    {
   started && count <= 8 ? (
     <Question random={random} count={count} setCount={setCount} setRandom={setRandom} setScore={setScore} score={score} />

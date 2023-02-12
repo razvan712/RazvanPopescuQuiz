@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {data} from '../../constants'
 import './Question.css'
 import { keyboard } from '@testing-library/user-event/dist/keyboard'
@@ -13,6 +13,7 @@ import Button from '@mui/material/Button';
 const Question = (props) => {
  
   const [value, setValue] = React.useState('');
+  const [defaultvalue, setDefaultValue] = React.useState('');
 
 
   let identifier = props.random;
@@ -28,19 +29,28 @@ const Question = (props) => {
     setValue(event.target.value);
   };
   
+ 
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     if (value === 'corect') {
        props.setCount(prev => prev + 1)
        props.setScore(prev => prev + 1)
+        props.setRandom(Math.floor(Math.random() * 4) + 1)
+        
        console.log(props.count)
       }
       else {
         props.setCount(prev => prev + 1)
       }
 
-}
+    }
+
+React.useEffect(() => {
+  setDefaultValue('')
+}, [props.count]);
 
 if (props.count < 8) {
   return (
@@ -58,7 +68,7 @@ if (props.count < 8) {
   }}>{question.body}</FormLabel>
   <RadioGroup
     aria-labelledby="demo-radio-buttons-group-label"
-    defaultValue=""
+    
     name="radio-buttons-group"
     sx={{background: 'gray',
     borderRadius: '10px',
@@ -66,7 +76,7 @@ if (props.count < 8) {
   onChange={handleRadioChange}
   >
     {answers.map((answer, index) => {
-           return <FormControlLabel className='answer' key={index} value={answer[0]} defaultValue='' control={<Radio />} label={answer[1]} />
+           return <FormControlLabel className='answer' key={index} value={answer[0]}   control={<Radio />} label={answer[1]} />
         }
         )}
    
@@ -76,6 +86,7 @@ if (props.count < 8) {
         </Button>
 </FormControl>
 </form>
+<h1 style={{color: 'white'}}> Your score is {props.score} points</h1>
        
      </div>
        
@@ -87,7 +98,7 @@ else {
     <div className='App' style={{display: 'flex'}}>
       <h1 style={{color: 'white'}}>Congratulations!!!</h1>
       
-      <h1 style={{color: 'white'}}> Your score is {props.score} points</h1>
+      <h1 style={{color: 'white'}}> Your final score is {props.score} points</h1>
       </div>
   )
 }
