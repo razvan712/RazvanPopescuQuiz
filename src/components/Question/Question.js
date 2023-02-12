@@ -39,6 +39,7 @@ const Question = (props) => {
        props.setCount(prev => prev + 1)
        props.setScore(prev => prev + 1)
         props.setRandom(Math.floor(Math.random() * 4) + 1)
+        setValue(undefined)
         
        console.log(props.count)
       }
@@ -68,7 +69,7 @@ if (props.count < 8) {
   }}>{question.body}</FormLabel>
   <RadioGroup
     aria-labelledby="demo-radio-buttons-group-label"
-    
+    value={value}
     name="radio-buttons-group"
     sx={{background: 'gray',
     borderRadius: '10px',
