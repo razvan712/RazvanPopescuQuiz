@@ -41,10 +41,11 @@ const Question = (props) => {
         props.setRandom(Math.floor(Math.random() * 4) + 1)
         setValue(undefined)
         
-       console.log(props.count)
       }
       else {
         props.setCount(prev => prev + 1)
+        setValue(undefined)
+        props.setRandom(Math.floor(Math.random() * 4) + 1)
       }
 
     }
